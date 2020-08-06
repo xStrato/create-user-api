@@ -10,5 +10,3 @@ const handler = new Handler(fakeRepository, mailtrap)
 const controller = new Controller(handler)
 
 export { handler, controller }
-
-console.log(fakeRepository)

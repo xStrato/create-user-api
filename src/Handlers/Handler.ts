@@ -21,7 +21,8 @@ export class Handler implements IHandler<CreateUserCommand>, IHandler<UpdateUser
 
         if(userAlreadyExists)
         {
-            this.result = new CommandResult(false, "User already exists.", command)
+            throw new Error("User already exists.")
+            // this.result = new CommandResult(false, "User already exists.", command)
             return;
         }
         const user = new User(command)
@@ -31,7 +32,12 @@ export class Handler implements IHandler<CreateUserCommand>, IHandler<UpdateUser
             to: { name: command.name, email: command.email },
             from: { name: "App Team", email: "app@team.com"},
             subject: "You're welcome in our App!",
-            body: "<p>Sign in right now!</p>"
+            body: `<h3>Sign in right now!</h3>
+                    <p>Follow your sign in information:</p>
+                    <p>Username: ${command.name}</p>
+                    <p>Email: ${command.email}</p>
+                    <p>Password: ${command.password}</p>
+                    `
         })
         
         this.result = new CommandResult(true, "User successfully created.", command)
