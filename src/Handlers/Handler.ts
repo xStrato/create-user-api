@@ -25,9 +25,9 @@ export class Handler implements IHandler<CreateUserCommand>, IHandler<UpdateUser
             return;
         }
         const user = new User(command)
-        this.repository.save(user)
+        await this.repository.save(user)
 
-        this.emailService.send({
+        await this.emailService.send({
             to: { name: command.name, email: command.email },
             from: { name: "App Team", email: "app@team.com"},
             subject: "You're welcome in our App!",
