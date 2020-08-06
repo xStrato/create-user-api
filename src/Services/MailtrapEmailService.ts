@@ -12,7 +12,7 @@ export class MailtrapEmailService implements IEmailService
         this.transporter = nodemailer.createTransport({
             host: 'smtp.mailtrap.io',
             port: 2525,
-            auth: { user:'e410cc743eaa63', pass: 'a50236358c650b'}
+            auth: { user:'', pass: ''}
         })
     }
     async send(message: IEmailMessageService): Promise<void>

@@ -7,11 +7,18 @@ export class FakeRepository implements IRepository<User>
     
     public constructor(){}
 
-    async findByEmail(email: string): Promise<User> {
+    public async findByEmail(email: string): Promise<User> 
+    {
         return this.users.find(user => user.email === email)
     }
 
-    async save(entity: User): Promise<void> {
+    public async save(entity: User): Promise<void> 
+    {
         this.users.push(entity)
+    }
+
+    public async listUsers(): Promise<Array<User>> 
+    {
+        return this.users
     }
 }

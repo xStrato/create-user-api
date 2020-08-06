@@ -12,7 +12,7 @@ export class Handler implements IHandler<CreateUserCommand>, IHandler<UpdateUser
     public result: ICommandResult
 
     constructor(
-    private readonly repository: IRepository<User>,
+    public readonly repository: IRepository<User>,
     private readonly emailService: IEmailService
     ){}
 
@@ -39,7 +39,6 @@ export class Handler implements IHandler<CreateUserCommand>, IHandler<UpdateUser
                     <p>Password: ${command.password}</p>
                     `
         })
-        
         this.result = new CommandResult(true, "User successfully created.", command)
     }
 }

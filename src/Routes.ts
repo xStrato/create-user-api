@@ -4,9 +4,11 @@ import { handler, controller } from "./Index";
 const router = Router()
 
 router.post('/users', (request, response) => {
-    return controller.execute(request, response)
+    return controller.create(request, response)
 })
 
-router.get('/users/list', (req, res) => res.json({name: "Hello World"}))
+router.get('/users/list', (req, res) => {
+    return controller.listUsers(req, res)
+})
 
 export { router }
